@@ -1,0 +1,12 @@
+data/
+results/
+*.rds
+*.Rds
+.Rproj.user/
+.Rhistory
+data-download.log
+code.zip
+qmd/
+R/
+sh/
+py/

@@ -1,0 +1,42 @@
+{
+  "name": "Publication-Ready Figures in 3 Hours",
+  "image": "ghcr.io/crazyhottommy/dataviz-course-env:latest",
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  "remoteUser": "rstudio",
+  "overrideCommand": false,
+  "containerEnv": {
+    "DISABLE_AUTH": "true",
+    "USER": "rstudio"
+  },
+  "forwardPorts": [
+    8787
+  ],
+  "portsAttributes": {
+    "8787": {
+      "label": "RStudio",
+      "onAutoForward": "notify",
+      "requireLocalPort": false
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "REditorSupport.r",
+        "quarto.quarto"
+      ]
+    },
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    }
+  },
+  "postCreateCommand": "bash download-data.sh dataviz > data-download.log 2>&1 || echo 'data download failed: run bash download-data.sh dataviz'"
+}
